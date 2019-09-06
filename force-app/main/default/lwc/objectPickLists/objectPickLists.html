@@ -1,0 +1,27 @@
+<template>
+
+    <lightning-card  title={objectpicklist.objectname}>
+        <lightning-button label="Create PickList" slot="actions" onclick={createPicklistForObject}></lightning-button>
+        <p class="slds-p-horizontal_small">
+            <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                <template for:each={objectpicklist.fieldPickLists} for:item="fieldPickList">
+                        <lightning-layout-item key={fieldPickList.fieldName} size="4" class="slds-p-around_medium">
+                                {fieldPickList.fieldName}
+                        </lightning-layout-item>
+                        <lightning-layout-item key={fieldPickList.fieldName} size="4" class="slds-p-around_x-small">
+                            <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                                <template for:each={fieldPickList.pickListValues} for:item="pickList">
+                                    <lightning-layout-item key={pickList} size="12" class="slds-p-around_x-small">
+                                        {pickList}
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                        <lightning-layout-item key={fieldPickList.fieldName} size="4" class="slds-p-around_medium">
+                                <lightning-button name={fieldPickList.fieldName} label="Create PickList" onclick={createPicklistForField} ></lightning-button>
+                        </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </p>
+    </lightning-card>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <div class="white-background">
+        <c-notification-library></c-notification-library>
+        <lightning-layout class="white-background" multiple-rows="true" pull-to-boundary="small">
+            <template for:each={pickListValues} for:item="pickList">
+                <lightning-layout-item key={pickList.objectname} size="12" class="slds-p-around_x-small">
+                    <c-object-pick-lists objectpicklist={pickList} onaddpicklist={callAddPicklist}></c-object-pick-lists>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+        <p if:true={isRequesting}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </p>
+    </div>
+</template>
